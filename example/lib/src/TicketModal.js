@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { View, Text, Dimensions } from "react-native";
-import Svg, { Polygon } from "react-native-svg";
 import Modal from "react-native-modal";
 import TearLines from "./components/TearLines";
 import FastImage from "react-native-fast-image";
 import Ripple from "react-native-material-ripple";
 import Icon from "react-native-dynamic-vector-icons";
+import styles, { container } from "./TicketModal.style";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
@@ -36,89 +37,57 @@ export default class TicketModal extends Component {
   }
 
   render() {
-    const { image } = this.props;
+    const {
+      image,
+      width,
+      height,
+      borderRadius,
+      backgroundColor,
+      resizeMode,
+      imageStyle,
+      tearlinesColor,
+      tearSize,
+      cuttingEdgesColor,
+      tearlinesWidth,
+      tearlinesStyle,
+      primaryTitleStyle,
+      primaryTitle,
+      secondaryTitleStyle,
+      secondaryTitle,
+      description,
+      descriptionStyle
+    } = this.props;
     return (
-      <Modal
-        backDrop
-        isVisible={true}
-        style={{
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <View
-          style={{
-            borderRadius: 16,
-            backgroundColor: "white",
-            width: ScreenWidth * 0.75,
-            height: ScreenHeight * 0.7
-          }}
-        >
-          <View style={{ flex: 1 }}>
+      <Modal backDrop isVisible={true} style={styles.modalContainer}>
+        <View style={container(width, height, borderRadius, backgroundColor)}>
+          <View style={styles.containerGlue}>
             <FastImage
               source={image}
-              resizeMode="cover"
-              style={{
-                borderTopLeftRadius: 16,
-                borderTopRightRadius: 16,
-                height: ScreenHeight * 0.3
-              }}
+              resizeMode={resizeMode}
+              style={imageStyle || styles.imageStyle}
             />
             <TearLines
-              color="white"
-              tearSize={15}
-              cuttingEdgesColor="#494b4c"
-              width={ScreenWidth * 0.75}
-              style={{
-                bottom: 12
-              }}
+              color={tearlinesColor}
+              tearSize={tearSize}
+              cuttingEdgesColor={cuttingEdgesColor}
+              width={tearlinesWidth}
+              style={tearlinesStyle || styles.tearlinesStyle}
             />
-            <View style={{ flex: 1 }}>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "center"
-                }}
-              >
-                <Text
-                  style={{ color: "#5f5f5f", fontSize: 20, fontWeight: "200" }}
-                >
-                  BUY 1,{"  "}
+            <View style={styles.innerContainer}>
+              <View style={styles.titleStyle}>
+                <Text style={primaryTitleStyle || styles.primaryTitleStyle}>
+                  {primaryTitle}
                 </Text>
-                <Text
-                  style={{
-                    color: "#EDCE86",
-                    fontWeight: "bold",
-                    fontSize: 20
-                  }}
-                >
-                  GET 1 FREE
+                <Text style={secondaryTitleStyle || styles.secondaryTitleStyle}>
+                  {secondaryTitle}
                 </Text>
               </View>
               <View>
-                <Text
-                  style={{
-                    color: "#727272",
-                    margin: 16,
-                    textAlign: "center",
-                    fontSize: 13,
-                    fontWeight: "400"
-                  }}
-                >
-                  Praesent viverra lacinia pharetra. In eleifend orci vitae
-                  sodales facilisis. Phasellus vulputate purus risus, vitae
-                  rhoncus nisi lobortis at. Etiam gravida ex non turpis dictum
-                  sollicitudin. Curabitur faucibus magna est, ut finibus sem
-                  porta hendrerit.
+                <Text style={descriptionStyle || styles.descriptionStyle}>
+                  {description}
                 </Text>
               </View>
-              <View
-                style={{
-                  marginTop: 24,
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
+              <View style={styles.buttonStyle}>
                 <Ripple
                   rippleColor="gray"
                   rippleContainerBorderRadius={24}
@@ -238,8 +207,34 @@ export default class TicketModal extends Component {
   }
 }
 
-TicketModal.propTypes = {};
+TicketModal.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  resizeMode: PropTypes.string,
+  borderRadius: PropTypes.number,
+  backgroundColor: PropTypes.string,
+  tearlinesColor: PropTypes.string,
+  tearSize: PropTypes.number,
+  cuttingEdgesColor: PropTypes.string,
+  tearlinesWidth: PropTypes.number,
+  primaryTitle: PropTypes.string,
+  secondaryTitle: PropTypes.string,
+  description: PropTypes.string
+};
 
 TicketModal.defaultProps = {
-  image: require("../../assets/others/jakub-dziubak-262303-unsplash.jpg")
+  image: require("../../assets/others/jakub-dziubak-262303-unsplash.jpg"),
+  width: ScreenWidth * 0.75,
+  height: ScreenHeight * 0.7,
+  borderRadius: 16,
+  backgroundColor: "white",
+  resizeMode: "cover",
+  tearlinesColor: "white",
+  tearSize: 15,
+  cuttingEdgesColor: "#494b4c",
+  tearlinesWidth: ScreenWidth * 0.75,
+  primaryTitle: "BUY 1,  ",
+  secondaryTitle: "GET 1 FREE",
+  description:
+    "Praesent viverra lacinia pharetra. In eleifend orci vitae sodales facilisis. Phasellus vulputate purus risus, vitae rhoncus nisi lobortis at. Etiam gravida ex non turpis dictum sollicitudin. Curabitur faucibus magna est, ut finibus sem porta hendrerit."
 };
