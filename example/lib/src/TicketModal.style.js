@@ -4,7 +4,7 @@ const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
 export function primaryTitleStyle() {}
 
-export function container(width, height, backgroundColor, borderRadius) {
+export function container(width, height, borderRadius, backgroundColor) {
   return {
     width: width,
     height: height,
