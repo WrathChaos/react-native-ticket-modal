@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Dimensions } from "react-native";
+import Svg, { Polygon } from "react-native-svg";
 import Modal from "react-native-modal";
-// import TearLines from "react-native-tear-lines";
 import TearLines from "./components/TearLines";
 import FastImage from "react-native-fast-image";
 import Ripple from "react-native-material-ripple";
@@ -9,10 +9,30 @@ import Icon from "react-native-dynamic-vector-icons";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
+const LINES_NUMBER = 25;
+
 export default class TicketModal extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  renderLines() {
+    var arr = [];
+    for (let i = 0; i < LINES_NUMBER; i++) {
+      arr.push(
+        <View
+          key={`line-${i}`}
+          style={{
+            width: 5,
+            height: 1.5,
+            paddingRight: 8,
+            backgroundColor: "#595959"
+          }}
+        />
+      );
+    }
+    return arr;
   }
 
   render() {
@@ -100,6 +120,8 @@ export default class TicketModal extends Component {
                 }}
               >
                 <Ripple
+                  rippleColor="gray"
+                  rippleContainerBorderRadius={24}
                   style={{
                     width: 200,
                     height: 50,
@@ -148,8 +170,8 @@ export default class TicketModal extends Component {
                 >
                   <Text
                     style={{
+                      fontSize: 10,
                       color: "#bebebc",
-                      fontSize: 12,
                       fontWeight: "200"
                     }}
                   >
@@ -165,17 +187,13 @@ export default class TicketModal extends Component {
                     borderBottomRightRadius: 16
                   }}
                 >
-                  <View>
-                    {/* {new Array(this.tiles).fill().map((e, i) => ( */}
-                    <View
-                      // key={`line-${i}`}
-                      style={{
-                        width: 30,
-                        height: 3,
-                        backgroundColor: "black"
-                      }}
-                    />
-                    {/* ))} */}
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-evenly"
+                    }}
+                  >
+                    {this.renderLines()}
                   </View>
                   <View
                     style={{
@@ -197,7 +215,7 @@ export default class TicketModal extends Component {
                           color: "white",
                           paddingRight: 8,
                           marginBottom: 3,
-                          fontWeight: "600"
+                          fontWeight: "bold"
                         }}
                       >
                         A7103B03FD
