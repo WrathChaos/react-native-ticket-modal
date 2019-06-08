@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import TicketModal from "./lib/src/TicketModal";
+import TicketModal from "react-native-ticket-modal";
 
 export default class App extends Component {
   render() {
