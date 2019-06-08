@@ -9,7 +9,8 @@ import Icon from "react-native-dynamic-vector-icons";
 import styles, {
   container,
   _rippleButtonStyle,
-  footerRedeemStyle
+  footerRedeemStyle,
+  footerRedeemTextStyle
 } from "./TicketModal.style";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
@@ -65,8 +66,9 @@ export default class TicketModal extends Component {
       buttonIconColor,
       buttonIconSize,
       buttonIconComponent,
-      footerTextStyle,
-      footerTimeText,
+      footerSmallText,
+      footerSmallTextStyle,
+
       footerHeight,
       footerBackgroundColor,
       footerTextColor,
@@ -128,8 +130,10 @@ export default class TicketModal extends Component {
               </View>
               <View style={styles.footerContainer}>
                 <View style={styles.footerTextContainer}>
-                  <Text style={footerTextStyle || styles.footerTextStyle}>
-                    {footerTimeText}
+                  <Text
+                    style={footerSmallTextStyle || styles.footerSmallTextStyle}
+                  >
+                    {footerSmallText}
                   </Text>
                 </View>
                 <View
@@ -143,7 +147,7 @@ export default class TicketModal extends Component {
                       <Text
                         style={
                           footerTextStyle ||
-                          redeemCodeTextStyle(footerTextColor)
+                          footerRedeemTextStyle(footerTextColor)
                         }
                       >
                         {footerText}
@@ -189,11 +193,11 @@ TicketModal.propTypes = {
   buttonIconColor: PropTypes.string,
   buttonIconSize: PropTypes.number,
   footerText: PropTypes.string,
-  footerTimeText: PropTypes.string
+  footerSmallText: PropTypes.string
 };
 
 TicketModal.defaultProps = {
-  image: require("../../../assets/jakub-dziubak-262303-unsplash.jpg"),
+  // image: require("../../assets/jakub-dziubak-262303-unsplash.jpg"),
   width: ScreenWidth * 0.75,
   height: ScreenHeight * 0.7,
   borderRadius: 16,
@@ -212,7 +216,7 @@ TicketModal.defaultProps = {
   buttonIconType: "Entypo",
   buttonIconColor: "white",
   buttonIconSize: 18,
-  footerTimeText: "Valid until 10/12/2019 20:34",
+  footerSmallText: "Valid until 10/12/2019 20:34",
   footerText: "A7103B03FD",
   description:
     "Praesent viverra lacinia pharetra. In eleifend orci vitae sodales facilisis. Phasellus vulputate purus risus, vitae rhoncus nisi lobortis at. Etiam gravida ex non turpis dictum sollicitudin. Curabitur faucibus magna est, ut finibus sem porta hendrerit."

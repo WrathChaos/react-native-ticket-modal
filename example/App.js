@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import TicketModal from "./lib/src/TicketModal";
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TicketModal />
+        <TicketModal
+          image={require("./assets/others/jakub-dziubak-262303-unsplash.jpg")}
+        />
       </View>
     );
   }
