@@ -2,6 +2,26 @@ import { Dimensions } from "react-native";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
+export function footerRedeemTextStyle(footerTextColor) {
+  return {
+    fontSize: 20,
+    paddingRight: 8,
+    marginBottom: 3,
+    fontWeight: "bold",
+    color: footerTextColor || "white"
+  };
+}
+
+export function footerRedeemStyle(footerHeight, footerBackgroundColor) {
+  return {
+    height: footerHeight || 60,
+    width: "100%",
+    backgroundColor: footerBackgroundColor || "#EDCE86",
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16
+  };
+}
+
 export function _rippleButtonStyle(backgroundColor, shadowColor) {
   return {
     width: 200,
@@ -79,5 +99,35 @@ export default {
     color: "white",
     paddingRight: 8,
     fontWeight: "600"
+  },
+  footerContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-end"
+  },
+  footerTextStyle: {
+    fontSize: 10,
+    color: "#bebebc",
+    fontWeight: "200"
+  },
+  footerTextContainer: {
+    flex: 1,
+    marginBottom: 12,
+    alignItems: "center",
+    justifyContent: "flex-end"
+  },
+  linesContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly"
+  },
+  footerContentContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  footerContentContainerGlue: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center"
   }
 };

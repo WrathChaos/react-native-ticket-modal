@@ -6,7 +6,11 @@ import TearLines from "./components/TearLines";
 import FastImage from "react-native-fast-image";
 import Ripple from "react-native-material-ripple";
 import Icon from "react-native-dynamic-vector-icons";
-import styles, { container, _rippleButtonStyle } from "./TicketModal.style";
+import styles, {
+  container,
+  _rippleButtonStyle,
+  footerRedeemStyle
+} from "./TicketModal.style";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
@@ -60,7 +64,15 @@ export default class TicketModal extends Component {
       buttonIconType,
       buttonIconColor,
       buttonIconSize,
-      buttonIconComponent
+      buttonIconComponent,
+      footerTextStyle,
+      footerTimeText,
+      footerHeight,
+      footerBackgroundColor,
+      footerTextColor,
+      footerTextStyle,
+      footerText,
+      footerIconComponent
     } = this.props;
     return (
       <Modal backDrop isVisible={true} style={styles.modalContainer}>
@@ -114,79 +126,36 @@ export default class TicketModal extends Component {
                   )}
                 </Ripple>
               </View>
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "flex-end"
-                }}
-              >
-                <View
-                  style={{
-                    flex: 1,
-                    marginBottom: 12,
-                    alignItems: "center",
-                    justifyContent: "flex-end"
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: "#bebebc",
-                      fontWeight: "200"
-                    }}
-                  >
-                    Valid until 10/12/2019 20:34
+              <View style={styles.footerContainer}>
+                <View style={styles.footerTextContainer}>
+                  <Text style={footerTextStyle || styles.footerTextStyle}>
+                    {footerTimeText}
                   </Text>
                 </View>
                 <View
-                  style={{
-                    height: 60,
-                    width: "100%",
-                    backgroundColor: "#EDCE86",
-                    borderBottomLeftRadius: 16,
-                    borderBottomRightRadius: 16
-                  }}
+                  style={footerRedeemStyle(footerHeight, footerBackgroundColor)}
                 >
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-evenly"
-                    }}
-                  >
+                  <View style={styles.linesContainer}>
                     {this.renderLines()}
                   </View>
-                  <View
-                    style={{
-                      flex: 1,
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center"
-                      }}
-                    >
+                  <View style={styles.footerContentContainer}>
+                    <View style={styles.footerContentContainerGlue}>
                       <Text
-                        style={{
-                          fontSize: 20,
-                          color: "white",
-                          paddingRight: 8,
-                          marginBottom: 3,
-                          fontWeight: "bold"
-                        }}
+                        style={
+                          footerTextStyle ||
+                          redeemCodeTextStyle(footerTextColor)
+                        }
                       >
-                        A7103B03FD
+                        {footerText}
                       </Text>
-                      <Icon
-                        size={20}
-                        type="Entypo"
-                        color="white"
-                        name="scissors"
-                      />
+                      {footerIconComponent || (
+                        <Icon
+                          size={20}
+                          type="Entypo"
+                          color="white"
+                          name="scissors"
+                        />
+                      )}
                     </View>
                   </View>
                 </View>
@@ -218,11 +187,13 @@ TicketModal.propTypes = {
   buttonIconName: PropTypes.string,
   buttonIconType: PropTypes.string,
   buttonIconColor: PropTypes.string,
-  buttonIconSize: PropTypes.number
+  buttonIconSize: PropTypes.number,
+  footerText: PropTypes.string,
+  footerTimeText: PropTypes.string
 };
 
 TicketModal.defaultProps = {
-  image: require("../../assets/others/jakub-dziubak-262303-unsplash.jpg"),
+  image: require("../../../assets/jakub-dziubak-262303-unsplash.jpg"),
   width: ScreenWidth * 0.75,
   height: ScreenHeight * 0.7,
   borderRadius: 16,
@@ -241,6 +212,8 @@ TicketModal.defaultProps = {
   buttonIconType: "Entypo",
   buttonIconColor: "white",
   buttonIconSize: 18,
+  footerTimeText: "Valid until 10/12/2019 20:34",
+  footerText: "A7103B03FD",
   description:
     "Praesent viverra lacinia pharetra. In eleifend orci vitae sodales facilisis. Phasellus vulputate purus risus, vitae rhoncus nisi lobortis at. Etiam gravida ex non turpis dictum sollicitudin. Curabitur faucibus magna est, ut finibus sem porta hendrerit."
 };
