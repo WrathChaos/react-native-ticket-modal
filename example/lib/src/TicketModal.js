@@ -6,18 +6,13 @@ import TearLines from "./components/TearLines";
 import FastImage from "react-native-fast-image";
 import Ripple from "react-native-material-ripple";
 import Icon from "react-native-dynamic-vector-icons";
-import styles, { container } from "./TicketModal.style";
+import styles, { container, _rippleButtonStyle } from "./TicketModal.style";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
 const LINES_NUMBER = 25;
 
 export default class TicketModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   renderLines() {
     var arr = [];
     for (let i = 0; i < LINES_NUMBER; i++) {
@@ -55,7 +50,17 @@ export default class TicketModal extends Component {
       secondaryTitleStyle,
       secondaryTitle,
       description,
-      descriptionStyle
+      descriptionStyle,
+      buttonStyle,
+      buttonColor,
+      buttonShadowColor,
+      buttonTextStyle,
+      buttonText,
+      buttonIconName,
+      buttonIconType,
+      buttonIconColor,
+      buttonIconSize,
+      buttonIconComponent
     } = this.props;
     return (
       <Modal backDrop isVisible={true} style={styles.modalContainer}>
@@ -91,35 +96,22 @@ export default class TicketModal extends Component {
                 <Ripple
                   rippleColor="gray"
                   rippleContainerBorderRadius={24}
-                  style={{
-                    width: 200,
-                    height: 50,
-                    borderRadius: 24,
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "#EDCE86",
-                    shadowColor: "#d1950c",
-                    shadowOffset: {
-                      width: 0,
-                      height: 8
-                    },
-                    shadowOpacity: 0.4,
-                    shadowRadius: 9,
-                    elevation: 8
-                  }}
+                  style={
+                    buttonStyle ||
+                    _rippleButtonStyle(buttonColor, buttonShadowColor)
+                  }
                 >
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      color: "white",
-                      paddingRight: 8,
-                      fontWeight: "600"
-                    }}
-                  >
-                    APPROVE
+                  <Text style={buttonTextStyle || styles.buttonTextStyle}>
+                    {buttonText}
                   </Text>
-                  <Icon name="check" type="Entypo" color="white" size={18} />
+                  {buttonIconComponent || (
+                    <Icon
+                      name={buttonIconName || "check"}
+                      type={buttonIconType || "Entypo"}
+                      color={buttonIconColor || "white"}
+                      size={buttonIconSize || 18}
+                    />
+                  )}
                 </Ripple>
               </View>
               <View
@@ -219,7 +211,14 @@ TicketModal.propTypes = {
   tearlinesWidth: PropTypes.number,
   primaryTitle: PropTypes.string,
   secondaryTitle: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  buttonColor: PropTypes.string,
+  buttonShadowColor: PropTypes.string,
+  buttonText: PropTypes.string,
+  buttonIconName: PropTypes.string,
+  buttonIconType: PropTypes.string,
+  buttonIconColor: PropTypes.string,
+  buttonIconSize: PropTypes.number
 };
 
 TicketModal.defaultProps = {
@@ -235,6 +234,13 @@ TicketModal.defaultProps = {
   tearlinesWidth: ScreenWidth * 0.75,
   primaryTitle: "BUY 1,  ",
   secondaryTitle: "GET 1 FREE",
+  buttonColor: "#EDCE86",
+  buttonShadowColor: "#d1950c",
+  buttonText: "APPROVE",
+  buttonIconName: "check",
+  buttonIconType: "Entypo",
+  buttonIconColor: "white",
+  buttonIconSize: 18,
   description:
     "Praesent viverra lacinia pharetra. In eleifend orci vitae sodales facilisis. Phasellus vulputate purus risus, vitae rhoncus nisi lobortis at. Etiam gravida ex non turpis dictum sollicitudin. Curabitur faucibus magna est, ut finibus sem porta hendrerit."
 };

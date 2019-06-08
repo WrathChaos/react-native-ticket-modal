@@ -2,7 +2,25 @@ import { Dimensions } from "react-native";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
-export function primaryTitleStyle() {}
+export function _rippleButtonStyle(backgroundColor, shadowColor) {
+  return {
+    width: 200,
+    height: 50,
+    borderRadius: 24,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: backgroundColor,
+    shadowColor: shadowColor,
+    shadowOffset: {
+      width: 0,
+      height: 8
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 9,
+    elevation: 8
+  };
+}
 
 export function container(width, height, borderRadius, backgroundColor) {
   return {
@@ -55,5 +73,11 @@ export default {
     marginTop: 24,
     alignItems: "center",
     justifyContent: "center"
+  },
+  buttonTextStyle: {
+    fontSize: 18,
+    color: "white",
+    paddingRight: 8,
+    fontWeight: "600"
   }
 };
