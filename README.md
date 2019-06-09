@@ -42,10 +42,7 @@ npm i react-native-ticket-modal
 ```js
 import TicketModal from "react-native-ticket-modal";
 
-
-<TicketModal
-   image={require("./assets/others/jakub-dziubak-262303-unsplash.jpg")}
-/>
+<TicketModal />
 ```
 
 ## Configuration - Props
