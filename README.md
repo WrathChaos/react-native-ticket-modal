@@ -72,6 +72,7 @@ import TicketModal from "react-native-ticket-modal";
 ### ToDos
 
 - [x] LICENSE
+- [ ] Update README to add Props
 - [ ] Write an article about the lib on Medium
 
 
