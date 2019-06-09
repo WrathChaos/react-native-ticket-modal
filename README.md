@@ -73,6 +73,11 @@ import TicketModal from "react-native-ticket-modal";
 - [ ] Write an article about the lib on Medium
 
 
+## Credits
+
+Thank you so much for the inspiration :) [Dribbble by Francesco Paradiso](https://dribbble.com/shots/4141595-Daily-UI-061-Redeem-Coupon)
+
+
 ## Author
 
 FreakyCoder, kurayogun@gmail.com
