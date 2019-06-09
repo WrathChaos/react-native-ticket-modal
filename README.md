@@ -52,17 +52,20 @@ import TicketModal from "react-native-ticket-modal";
 
 #### Coming Soon
 
-| <!--             | Property |         Type         | Default                                               | Description |
-| ---------------- | :------: | :------------------: | ----------------------------------------------------- |
-| headerText       |  string  | "Screen Information" | change the Card's title                               |
-| title            |  string  |     "Device OS"      | change the Container's title                          |
-| titleColor       |  color   |         gray         | change the Container's title color                    |
-| titleFontSize    |  number  |          13          | change the Container's title font size                |
-| titleStyle       |  style   |       default        | set your own style for the Container's title style    |
-| subtitle         |  string  |          ""          | change the Container's subtitle                       |
-| subtitleColor    |  string  |      "#222222"       | change the Container's subtitle color                 |
-| subtitleFontSize |  string  |          15          | change the Container's subtitle font size             |
-| subtitleStyle    |  style   |       default        | set your own style for the Container's subtitle style | -->         |
+<!-- 
+| Property         |  Type  |       Default        | Description                                           |
+| ---------------- | :----: | :------------------: | ----------------------------------------------------- |
+| headerText       | string | "Screen Information" | change the Card's title                               |
+| title            | string |     "Device OS"      | change the Container's title                          |
+| titleColor       | color  |         gray         | change the Container's title color                    |
+| titleFontSize    | number |          13          | change the Container's title font size                |
+| titleStyle       | style  |       default        | set your own style for the Container's title style    |
+| subtitle         | string |          ""          | change the Container's subtitle                       |
+| subtitleColor    | string |      "#222222"       | change the Container's subtitle color                 |
+| subtitleFontSize | string |          15          | change the Container's subtitle font size             |
+| subtitleStyle    | style  |       default        | set your own style for the Container's subtitle style |
+
+-->
 
 
 
