@@ -8,8 +8,6 @@ Ready to GO Ticket Modal for React Native.
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-# Ticket Modal
-
 <p align="center">
 <img alt="React Native Ticket Modal" src="https://github.com/WrathChaos/react-native-ticket-modal/blob/master/assets/Screenshots/example.png" width="49.7%" />
 </p>
