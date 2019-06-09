@@ -30,7 +30,6 @@ npm i react-native-ticket-modal
 ```
 "react": ">= 16.x.x",
 "react-native": ">= 0.55.x",
-"react-native-svg": ">= 9.4.0",
 "react-native-modal": ">= 11.0.1",
 "react-native-fast-image": ">= 6.0.3",
 "react-native-vector-icons": ">= 6.5.0",
